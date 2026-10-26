@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 7.4.2 (Python 3.14.5 on win32)" generated="2026-10-26T16:36:24.701397" rpa="false" schemaversion="5">
+<suite id="s1" name="Products" source="C:\iterasys01\API-Squad\tests\products.robot">
+<test id="s1-t1" name="GET - Buscar produto existente" line="13">
+<kw name="GET" owner="RequestsLibrary">
+<msg time="2026-10-26T16:36:26.159723" level="INFO">GET Request : url=https://fakestoreapi.com/products/1 
+ path_url=/products/1 
+ headers={'User-Agent': 'python-requests/2.34.2', 'Accept-Encoding': 'gzip, deflate, zstd', 'Accept': '*/*', 'Connection': 'keep-alive'} 
+ body=None 
+ </msg>
+<msg time="2026-10-26T16:36:26.159881" level="INFO">GET Response : url=https://fakestoreapi.com/products/1 
+ status=200, reason=OK 
+ headers={'Date': 'Mon, 26 Oct 2026 19:36:30 GMT', 'Content-Type': 'application/json; charset=utf-8', 'Transfer-Encoding': 'chunked', 'Connection': 'keep-alive', 'access-control-allow-origin': '*', 'etag': 'W/"16d-ryVvNeDR+OwaJd+i2vi/OPo/G4Y"', 'x-powered-by': 'Express', 'cf-cache-status': 'DYNAMIC', 'Nel': '{"report_to":"cf-nel","success_fraction":0.0,"max_age":604800}', 'Report-To': '{"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=eflgJTNMuK8WMXPqCoFfM78df2iPbdgmeTPrxhzo7ta2ZfSBNUh00bHsKk6ZEC%2FN75poanmrefp6EhzIOkhTMH%2B10zgL2Ai8ij4yYHcbEEJu9fHdpw%2FFUFr74fjcq4NfUM4%2B"}]}', 'Content-Encoding': 'zstd', 'Server': 'cloudflare', 'CF-RAY': 'a50be9016e0bf1e2-GRU'} 
+ body={"id":1,"title":"Fjallraven - Foldsack No. 1 Backpack, Fits 15 Laptops","price":109.95,"description":"Your perfect pack for everyday use and walks in the forest. Stash your laptop (up to 15 inches) in the padded sleeve, your everyday","category":"men's clothing","image":"https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_t.png","rating":{"rate":3.9,"count":120}} 
+ </msg>
+<msg time="2026-10-26T16:36:26.160080" level="INFO">${response} = &lt;Response [200]&gt;</msg>
+<var>${response}</var>
+<arg>${{$url + '/' + $id}}</arg>
+<doc>Sends a GET request.</doc>
+<status status="PASS" start="2026-10-26T16:36:24.922230" elapsed="1.237875"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2026-10-26T16:36:26.161199" level="INFO">${response_body} = {'id': 1, 'title': 'Fjallraven - Foldsack No. 1 Backpack, Fits 15 Laptops', 'price': 109.95, 'description': 'Your perfect pack for everyday use and walks in the forest. Stash your laptop (up to 15 inc...</msg>
+<var>${response_body}</var>
+<arg>${response.json()}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2026-10-26T16:36:26.160500" elapsed="0.000724"/>
+</kw>
+<kw name="Log To Console" owner="BuiltIn">
+<arg>${response_body}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" start="2026-10-26T16:36:26.161391" elapsed="0.000274"/>
+</kw>
+<kw name="Status Should Be" owner="RequestsLibrary">
+<arg>200</arg>
+<arg>${response}</arg>
+<doc>Fails if response status code is different than the expected.</doc>
+<status status="PASS" start="2026-10-26T16:36:26.161855" elapsed="0.000209"/>
+</kw>
+<kw name="Should Be Equal As Integers" owner="BuiltIn">
+<msg time="2026-10-26T16:36:26.162494" level="INFO">Argument types are:
+&lt;class 'int'&gt;
+&lt;class 'str'&gt;</msg>
+<arg>${response_body}[id]</arg>
+<arg>${id}</arg>
+<doc>Fails if objects are unequal after converting them to integers.</doc>
+<status status="PASS" start="2026-10-26T16:36:26.162255" elapsed="0.000287"/>
+</kw>
+<kw name="Dictionary Should Contain Key" owner="Collections">
+<arg>${response_body}</arg>
+<arg>title</arg>
+<doc>Fails if ``key`` is not found from ``dictionary``.</doc>
+<status status="PASS" start="2026-10-26T16:36:26.162694" elapsed="0.000125"/>
+</kw>
+<kw name="Dictionary Should Contain Key" owner="Collections">
+<arg>${response_body}</arg>
+<arg>price</arg>
+<doc>Fails if ``key`` is not found from ``dictionary``.</doc>
+<status status="PASS" start="2026-10-26T16:36:26.162973" elapsed="0.000135"/>
+</kw>
+<kw name="Dictionary Should Contain Key" owner="Collections">
+<arg>${response_body}</arg>
+<arg>description</arg>
+<doc>Fails if ``key`` is not found from ``dictionary``.</doc>
+<status status="PASS" start="2026-10-26T16:36:26.163305" elapsed="0.000132"/>
+</kw>
+<kw name="Dictionary Should Contain Key" owner="Collections">
+<arg>${response_body}</arg>
+<arg>category</arg>
+<doc>Fails if ``key`` is not found from ``dictionary``.</doc>
+<status status="PASS" start="2026-10-26T16:36:26.163598" elapsed="0.000140"/>
+</kw>
+<kw name="Dictionary Should Contain Key" owner="Collections">
+<arg>${response_body}</arg>
+<arg>image</arg>
+<doc>Fails if ``key`` is not found from ``dictionary``.</doc>
+<status status="PASS" start="2026-10-26T16:36:26.164018" elapsed="0.000124"/>
+</kw>
+<status status="PASS" start="2026-10-26T16:36:24.921305" elapsed="1.243020"/>
+</test>
+<test id="s1-t2" name="DELETE - Excluir produto existente" line="31">
+<kw name="DELETE" owner="RequestsLibrary">
+<msg time="2026-10-26T16:36:26.784807" level="INFO">DELETE Request : url=https://fakestoreapi.com/products/1 
+ path_url=/products/1 
+ headers={'User-Agent': 'python-requests/2.34.2', 'Accept-Encoding': 'gzip, deflate, zstd', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Length': '0'} 
+ body=None 
+ </msg>
+<msg time="2026-10-26T16:36:26.784896" level="INFO">DELETE Response : url=https://fakestoreapi.com/products/1 
+ status=200, reason=OK 
+ headers={'Date': 'Mon, 26 Oct 2026 19:36:31 GMT', 'Content-Type': 'application/json; charset=utf-8', 'Transfer-Encoding': 'chunked', 'Connection': 'keep-alive', 'access-control-allow-origin': '*', 'etag': 'W/"16d-ryVvNeDR+OwaJd+i2vi/OPo/G4Y"', 'x-powered-by': 'Express', 'cf-cache-status': 'DYNAMIC', 'Nel': '{"report_to":"cf-nel","success_fraction":0.0,"max_age":604800}', 'Report-To': '{"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=JAgB8I%2BaKleYsSgVNZspEyLgo2de5D99pBr9IWZ6P8L%2FOWqeVQGoPV8nxhgd47kkjbqXAEI6outKi7E249JE51VLg4KVKqYEdJH2m5M%2BYZrYr3Ox83eSMxHUgYtkV6661xFb"}]}', 'Content-Encoding': 'zstd', 'Server': 'cloudflare', 'CF-RAY': 'a50be908fbbbf1b4-GRU'} 
+ body={"id":1,"title":"Fjallraven - Foldsack No. 1 Backpack, Fits 15 Laptops","price":109.95,"description":"Your perfect pack for everyday use and walks in the forest. Stash your laptop (up to 15 inches) in the padded sleeve, your everyday","category":"men's clothing","image":"https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_t.png","rating":{"rate":3.9,"count":120}} 
+ </msg>
+<msg time="2026-10-26T16:36:26.785027" level="INFO">${response} = &lt;Response [200]&gt;</msg>
+<var>${response}</var>
+<arg>${{$url + '/' + $id}}</arg>
+<doc>Sends a DELETE request.</doc>
+<status status="PASS" start="2026-10-26T16:36:26.164956" elapsed="0.620091"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2026-10-26T16:36:26.785884" level="INFO">${response_body} = {'id': 1, 'title': 'Fjallraven - Foldsack No. 1 Backpack, Fits 15 Laptops', 'price': 109.95, 'description': 'Your perfect pack for everyday use and walks in the forest. Stash your laptop (up to 15 inc...</msg>
+<var>${response_body}</var>
+<arg>${response.json()}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2026-10-26T16:36:26.785328" elapsed="0.000578"/>
+</kw>
+<kw name="Log To Console" owner="BuiltIn">
+<arg>${response_body}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" start="2026-10-26T16:36:26.786090" elapsed="0.000263"/>
+</kw>
+<kw name="Status Should Be" owner="RequestsLibrary">
+<arg>200</arg>
+<arg>${response}</arg>
+<doc>Fails if response status code is different than the expected.</doc>
+<status status="PASS" start="2026-10-26T16:36:26.786513" elapsed="0.000135"/>
+</kw>
+<kw name="Should Be Equal As Integers" owner="BuiltIn">
+<msg time="2026-10-26T16:36:26.786991" level="INFO">Argument types are:
+&lt;class 'int'&gt;
+&lt;class 'str'&gt;</msg>
+<arg>${response_body}[id]</arg>
+<arg>${id}</arg>
+<doc>Fails if objects are unequal after converting them to integers.</doc>
+<status status="PASS" start="2026-10-26T16:36:26.786794" elapsed="0.000239"/>
+</kw>
+<kw name="Dictionary Should Contain Key" owner="Collections">
+<arg>${response_body}</arg>
+<arg>title</arg>
+<doc>Fails if ``key`` is not found from ``dictionary``.</doc>
+<status status="PASS" start="2026-10-26T16:36:26.787194" elapsed="0.000110"/>
+</kw>
+<kw name="Dictionary Should Contain Key" owner="Collections">
+<arg>${response_body}</arg>
+<arg>price</arg>
+<doc>Fails if ``key`` is not found from ``dictionary``.</doc>
+<status status="PASS" start="2026-10-26T16:36:26.787446" elapsed="0.000125"/>
+</kw>
+<status status="PASS" start="2026-10-26T16:36:26.164646" elapsed="0.623077"/>
+</test>
+<status status="PASS" start="2026-10-26T16:36:24.702858" elapsed="2.085394"/>
+</suite>
+<statistics>
+<total>
+<stat pass="2" fail="0" skip="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat name="Products" id="s1" pass="2" fail="0" skip="0">Products</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>
