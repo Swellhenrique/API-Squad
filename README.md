@@ -29,7 +29,7 @@ Projeto de automação de testes de API desenvolvido com **Python e Robot Framew
 
 Assista à demonstração prática do projeto, com áudio, apresentando a execução das automações e os resultados dos testes.
 
-▶️ **[Assistir ao vídeo – FakeStore API](videos/API-squad-Swell.mp4)**
+▶️ **[Assistir ao vídeo – FakeStore API](https://github.com/Swellhenrique/API-Squad/issues/1#issue-6112278967)
 
 ## 📁 Estrutura do projeto
 
